@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- ADD MONTSERRAT FONT-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <!-- ADD FONTAWESOME -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <!-- ADD MY STYLE -->
+    <link rel="stylesheet" href="style.css">
+    <!-- ADD JQUERY -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- ADD MY SCRIPT -->
+    <script src="script.js" charset="utf-8"></script>
+    <!-- ADD MOMENT CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+    <!-- ADD HANDLEBARS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"
+    charset="utf-8"></script>
+    <!-- ADD TEMPLATE HANDLEBARS  -->
+    <script id="template" type="text/x-handlebars-template">
+    <li>Title: {{ title }} <br>
+      Voto: {{ vote }} <span><i class="far fa-thumbs-up"></i><i class="far fa-thumbs-down"></i></span><br>
+      Lingua originale: {{ originalLanguage }}<br>
+      Original Title: {{ originalTitle }}<br>
+      Descrizione: {{ description }}</li>
+    </script>
+  </head>
+  <body>
+
+    <div class="header">
+      <h1>BOOLFLIX</h1>
+    </div>
+    <div class="container">
+      <!-- searchBox -->
+      <div class="searchBox">
+        <input type="text" id="titleMovieSearch" name="" value="" placeholder="Titolo del film">
+        <input type="button" id="btnInput" name="" value="Search">
+      </div>
+
+      <div class="wrapper">
+        <ul class="film">
+
+        </ul>
+      </div>
+
+    </div>
+
+  </body>
+</html>

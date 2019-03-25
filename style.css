@@ -1,0 +1,41 @@
+*{margin:0; padding: 0; box-sizing: border-box;}
+
+body{
+font-family: 'Montserrat', sans-serif;
+background-color: rgb(214, 214, 214);
+}
+
+.container{
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
+}
+
+.header{
+  height: 50px;
+  width: 100;
+  color: white;
+  background-color: red;
+  display: flex;
+  align-items:center;
+}
+.header h1{
+  margin-left: 15px;
+}
+
+li{
+font-weight: bold;
+margin: 15px 0;
+margin-left: 15px;
+list-style-type: none;
+border-bottom: 1px solid black;
+width: 500px;
+}
+
+li span{
+  margin-left: 100px;
+}
+
+li span i{
+  padding: 0 5px;
+}
