@@ -2,11 +2,15 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Boolflix</title>
+    <!-- ADD ICON -->
+    <link rel="shortcut icon" type="image/x-icon" href="imgs/nLogoIcon.png">
     <!-- ADD MONTSERRAT FONT-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <!-- ADD FONTAWESOME -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <!-- ADD BOOTSTRAP -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- ADD MY STYLE -->
     <link rel="stylesheet" href="style.css">
     <!-- ADD JQUERY -->
@@ -18,31 +22,82 @@
     <!-- ADD HANDLEBARS CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"
     charset="utf-8"></script>
-    <!-- ADD TEMPLATE HANDLEBARS  -->
-    <script id="template" type="text/x-handlebars-template">
+    <!-- ADD TEMPLATE HANDLEBARS PER FILM -->
+    <script id="film-template" type="text/x-handlebars-template">
     <li>Title: {{ title }} <br>
-      Voto: {{ vote }} <span><i class="far fa-thumbs-up"></i><i class="far fa-thumbs-down"></i></span><br>
-      Lingua originale: {{ originalLanguage }}<br>
+      Stars: {{{ stars }}} <br>
+      Lingua originale: <img src="{{{ originalLanguage }}}" alt=""/><br>
       Original Title: {{ originalTitle }}<br>
-      Descrizione: {{ description }}</li>
+      Descrizione: {{ description }}
+    </li>
     </script>
+    <!-- ADD TEMPLATE HANDLEBARS PER SERIE TV -->
+    <script id="serie-template" type="text/x-handlebars-template">
+      <li>Title: {{ name }} <br>
+        Stars: {{{ stars }}} <br>
+        Lingua originale: {{ originalLanguage }}<br>
+        Original Title: {{ originalTitle }}<br>
+        Descrizione: {{ description }}
+      </li>
+    </script>
+
   </head>
   <body>
 
+    <!-- NAVBAR -->
     <div class="header">
-      <h1>BOOLFLIX</h1>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand logo" href="#"><img src="imgs/logoNeflix.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Serie</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Film</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Aggiunti di recente</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">La mia lista</a>
+            </li>
+          </ul>
+
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" id="titleMovieSearch" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" id="btnInput" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
     </div>
+    <!-- END NAVBAR -->
+
+
+
     <div class="container">
-      <!-- searchBox -->
-      <div class="searchBox">
-        <input type="text" id="titleMovieSearch" name="" value="" placeholder="Titolo del film">
-        <input type="button" id="btnInput" name="" value="Search">
-      </div>
 
       <div class="wrapper">
-        <ul class="film">
+        <div class="film-container">
+          <h2>FILM</h2>
+          <ul class="film">
+          <!-- VERRANNO AGGIUNTI I <li> da Hendelbars -->
+          </ul>
+        </div>
 
-        </ul>
+        <div class="serie">
+          <h2>Serie TV</h2>
+          <ul class="serie-tv">
+          <!-- VERRANNO AGGIUNTI I <li> da Hendelbars -->
+          </ul>
+        </div>
       </div>
 
     </div>

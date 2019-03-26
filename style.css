@@ -11,31 +11,37 @@ background-color: rgb(214, 214, 214);
   margin: auto;
 }
 
-.header{
+.logo img{
+  width: 150px;
   height: 50px;
-  width: 100;
+}
+
+.nav-item a{
+font-weight: bold;
+}
+
+.header{
   color: white;
-  background-color: red;
-  display: flex;
-  align-items:center;
+  background-color: #000000;
 }
 .header h1{
   margin-left: 15px;
 }
 
-li{
+.wrapper{
+  display:flex;
+  justify-content: space-around;
+}
+
+.wrapper li img{
+  width: 20px;
+}
+
+.container li{
 font-weight: bold;
 margin: 15px 0;
 margin-left: 15px;
 list-style-type: none;
 border-bottom: 1px solid black;
 width: 500px;
-}
-
-li span{
-  margin-left: 100px;
-}
-
-li span i{
-  padding: 0 5px;
 }
