@@ -121,9 +121,11 @@ function callAPITheMovieDbSeries(title){
 
         // chiamata per aggiugere le stelline
         var starIcon = addStarsIcon(votoInStelle);
+        //chiamata per la bandierina
+        var flag = getFlag(origLang);
 
 
-        addTitleSeries(title, starIcon, origLang, originalTitle, overview);
+        addTitleSeries(title, starIcon, flag, originalTitle, overview);
 
       }
 
