@@ -24,7 +24,8 @@
     charset="utf-8"></script>
     <!-- ADD TEMPLATE HANDLEBARS PER FILM -->
     <script id="film-template" type="text/x-handlebars-template">
-    <li>Title: {{ title }} <br>
+    <li>{{{ poster }}}<br>
+      Title: {{ title }} <br>
       Stars: {{{ stars }}} <br>
       Lingua originale: <img src="{{{ originalLanguage }}}" alt=""/><br>
       Original Title: {{ originalTitle }}<br>
@@ -35,7 +36,7 @@
     <script id="serie-template" type="text/x-handlebars-template">
       <li>Title: {{ name }} <br>
         Stars: {{{ stars }}} <br>
-        Lingua originale: <img src="{{{ originalLanguage }}}" alt=""/><br>
+        Lingua originale: <img class="nationFlag" src="{{{ originalLanguage }}}" alt=""/><br>
         Original Title: {{ originalTitle }}<br>
         Descrizione: {{ description }}
       </li>

@@ -5,14 +5,19 @@ originalLanguage == lingua originale
 originalTitle == Titolo originale
 description == testo di overview che viene dato su ajax
 */
-function addTitleFilm(title, starIcon, originalLanguage, originalTitle, description) {
+function addTitleFilm(title, starIcon, originalLanguage, originalTitle, description, complPoster) {
   var tempData = {
+    poster: complPoster,
     title:title,
     stars: starIcon,
     originalLanguage: originalLanguage,
     originalTitle: originalTitle,
     description : description
   }
+
+  // var divData = {
+  //   thumbnail:
+  // }
 
   var template = $("#film-template").html();
   var compiled = Handlebars.compile(template);
@@ -73,6 +78,9 @@ function callAPITheMovieDbFilm(title) {
         var origLang = res.original_language;
         var originalTitle = res.original_title;
         var overview = res.overview;
+        var poster = res.poster_path;
+        var complPoster = "<img src=" + "https://image.tmdb.org/t/p/w185" + poster + " " + "alt=''/>";
+        console.log(complPoster);
 
         // chiamata per aggiugere le stelline
         var starIcon = addStarsIcon(votoInStelle);
@@ -80,7 +88,7 @@ function callAPITheMovieDbFilm(title) {
         var flag = getFlag(origLang);
 
         /*chiamata alla funzione che compila handlebars*/
-        addTitleFilm(title, starIcon, flag, originalTitle, overview);
+        addTitleFilm(title, starIcon, flag, originalTitle, overview, complPoster);
 
       }
 
@@ -186,17 +194,18 @@ Assegna le bandierine della nazione
 */
 function getFlag(origLang) {
   var html = ""
-  if(origLang=="en"){
-    html = "imgs/en.png"
-  }else if(origLang=="it"){
-    html = "imgs/it.png"
-  }else if(origLang=="us"){
-    html = "imgs/us.png"
-  }else {
-    html = "imgs/unknow.png";
-  }
-  return html;
 
+  switch (origLang) {
+    case "en": html = "imgs/en.png"
+    break;
+    case "it": html = "imgs/it.png"
+    break;
+    case "us": html = "imgs/us.png"
+    break;
+    default: html = "imgs/unknow.png"
+  }
+
+  return html;
 }
 
 
