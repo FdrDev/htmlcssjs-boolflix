@@ -15,10 +15,6 @@ function addTitleFilm(title, starIcon, originalLanguage, originalTitle, descript
     description : description
   }
 
-  // var divData = {
-  //   thumbnail:
-  // }
-
   var template = $("#film-template").html();
   var compiled = Handlebars.compile(template);
   var li = compiled(tempData);
@@ -35,8 +31,9 @@ originalLang == lingua originale
 originalTitle == Titolo originale
 overview == testo di overview che viene dato su ajax
 */
-function addTitleSeries(title, starIcon, origLang, originalTitle, overview){
+function addTitleSeries(title, starIcon, origLang, originalTitle, overview, complPoster){
   var tempData = {
+    poster: complPoster,
     name: title,
     stars : starIcon,
     originalLanguage : origLang,
@@ -79,7 +76,7 @@ function callAPITheMovieDbFilm(title) {
         var originalTitle = res.original_title;
         var overview = res.overview;
         var poster = res.poster_path;
-        var complPoster = "<img src=" + "https://image.tmdb.org/t/p/w185" + poster + " " + "alt=''/>";
+        var complPoster = "<img class="+ "posterImg"+ " " +"src=" + "https://image.tmdb.org/t/p/w300" + poster + " " + "alt=''/>";
         console.log(complPoster);
 
         // chiamata per aggiugere le stelline
@@ -126,14 +123,19 @@ function callAPITheMovieDbSeries(title){
         var origLang = res.original_language;
         var originalTitle = res.original_name;
         var overview = res.overview;
+        var poster = res.poster_path;
+        var complPoster = "<img class="+ "posterImg"+ " " +"src=" + "https://image.tmdb.org/t/p/w300" + poster + " " + "alt=''/>";
+        var id = res.id;
+        console.log("QUESTO È L'ID" + id);
 
         // chiamata per aggiugere le stelline
         var starIcon = addStarsIcon(votoInStelle);
         //chiamata per la bandierina
         var flag = getFlag(origLang);
 
+        getCast(id);
 
-        addTitleSeries(title, starIcon, flag, originalTitle, overview);
+        addTitleSeries(title, starIcon, flag, originalTitle, overview, complPoster);
 
       }
 
@@ -146,6 +148,35 @@ function callAPITheMovieDbSeries(title){
   });
 }
 
+function getID(id) {
+    var url = "https://api.themoviedb.org/3/movie/";
+    var iD = id;
+    var finalHTML = url + id + "/credits";
+
+    return finalHTML;
+}
+
+function getCast(id){
+  var ourData = {
+    api_key:"75170e6982d68a1a46623efb2f6ace28"
+  }
+
+  $.ajax({
+    url: getID(id),
+    method:"GET",
+    data : ourData,
+    success:function(data){
+      var ress = data.cast;
+      console.log(ress);
+    },
+    error:function(request, state, error ){
+      console.log("request", request);
+      console.log("state", state);
+      console.log("error", error);
+    }
+  })
+}
+
 /*
 Permette di avviare la ricerca anche premendo invio
 */
@@ -153,6 +184,7 @@ function searchByEnter(e){
   if(e.keyCode!=13){
     return
   }
+
   var titleInputSearch =$("#titleMovieSearch"); //campo di testo
   var title = "";
   title = titleInputSearch.val();
@@ -208,6 +240,29 @@ function getFlag(origLang) {
   return html;
 }
 
+function scrollingArrowRight() {
+  $(".film").animate({scrollLeft: "+=200"}, 800);
+}
+
+function scrollingArrowLeft() {
+  $(".film").animate({scrollLeft: "-=200"}, 800);
+}
+
+
+
+
+/*
+Mostra la descrizione al passaggio del mouse
+*/
+function hoverForOverview(me){
+ var me = $(this);
+ var description = me.find(".descriptionOver");
+ description.toggleClass("show");
+ var foto = me.find(".posterImg");
+ me.toggleClass("big");
+ foto.toggleClass("big");
+}
+
 
 /*
 pulisce la schermata ad ogni ricerca
@@ -216,7 +271,7 @@ function clear() {
 
   var titleInputSearch =$("#titleMovieSearch"); //campo di testo
   titleInputSearch.val("");
-  var li = $(".wrapper li");
+  var li = $(".locandina,.descriptionOver");
   li.remove();
 }
 
@@ -226,6 +281,7 @@ function init() {
   var btnInput = $("#btnInput"); //button del form
   var titleInputSearch =$("#titleMovieSearch"); //campo di testo
   var title = "";
+  var locandina = $(".locandina");
 
   //ricerca tramite click su button
   btnInput.click(function(){
@@ -239,6 +295,19 @@ function init() {
   //ricerca premendo invio
   titleInputSearch.on("keyup", searchByEnter);
 
+  /*Mostra la descrizione al passaggio del mouse*/
+  $(document).on("mouseenter",".locandina",hoverForOverview);
+  $(document).on("mouseleave",".locandina",hoverForOverview);
+
+  /*Scrolling*/
+  $(document).on("click", ".arrowRight", scrollingArrowRight);
+  $(document).on("click", ".arrowLeft", scrollingArrowLeft);
+
+  /*cast*/
+  $(document).on("click",".descriptionOver",getCast);
+
+
 }
+
 
 $(document).ready(init);

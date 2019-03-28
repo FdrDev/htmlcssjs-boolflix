@@ -24,22 +24,26 @@
     charset="utf-8"></script>
     <!-- ADD TEMPLATE HANDLEBARS PER FILM -->
     <script id="film-template" type="text/x-handlebars-template">
-    <li>{{{ poster }}}<br>
-      Title: {{ title }} <br>
-      Stars: {{{ stars }}} <br>
-      Lingua originale: <img src="{{{ originalLanguage }}}" alt=""/><br>
-      Original Title: {{ originalTitle }}<br>
-      Descrizione: {{ description }}
-    </li>
+      <div class="locandina"> {{{ poster }}}
+        <div class="descriptionOver">
+          <p>Title: {{ title }} <br>
+          Stars: {{{ stars }}} <br>
+          Lingua originale: <img class="nationFlag" src="{{{ originalLanguage }}}" alt=""/><br>
+          Original Title: {{ originalTitle }}<br>
+          Descrizione: <span class="descrizione">{{ description }}</span></p>
+        </div>
+      </div>
     </script>
     <!-- ADD TEMPLATE HANDLEBARS PER SERIE TV -->
     <script id="serie-template" type="text/x-handlebars-template">
-      <li>Title: {{ name }} <br>
-        Stars: {{{ stars }}} <br>
-        Lingua originale: <img class="nationFlag" src="{{{ originalLanguage }}}" alt=""/><br>
-        Original Title: {{ originalTitle }}<br>
-        Descrizione: {{ description }}
-      </li>
+      <div class="locandina"> {{{ poster }}}
+        <div class="descriptionOver" ><p>Title: {{ name }} <br>
+          Stars: {{{ stars }}} <br>
+          Lingua originale: <img class="nationFlag" src="{{{ originalLanguage }}}" alt=""/><br>
+          Original Title: {{ originalTitle }}<br>
+          Descrizione: {{ description }}</p>
+        </div>
+      </div>
     </script>
 
   </head>
@@ -72,10 +76,10 @@
             </li>
           </ul>
 
-          <form class="form-inline my-2 my-lg-0">
+          <div class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" id="titleMovieSearch" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" id="btnInput" type="submit">Search</button>
-          </form>
+            <button class="btn btn-outline-success my-2 my-sm-0" id="btnInput" type="button">Search</button>
+          </div>
         </div>
       </nav>
     </div>
@@ -83,22 +87,26 @@
 
 
 
-    <div class="container">
+    <div class="mycontainer">
 
       <div class="wrapper">
-        <div class="film-container">
-          <h2>FILM</h2>
-          <ul class="film">
+        <div class="film-container scrolling-wrapper">
+          <!-- <h2>FILM</h2> -->
+          <div class="arrowLeft"><i class="fas fa-chevron-left"></i></div>
+          <div class="film">
           <!-- VERRANNO AGGIUNTI I <li> da Hendelbars -->
-          </ul>
+          </div>
+          <div class="arrowRight"><i class="fas fa-chevron-right"></i></div>
         </div>
 
-        <div class="serie">
-          <h2>Serie TV</h2>
-          <ul class="serie-tv">
+        <div class="serie-container scrolling-wrapper">
+          <div class="arrowLeft"><i class="fas fa-chevron-left"></i></div>
+            <div class="serie-tv ">
           <!-- VERRANNO AGGIUNTI I <li> da Hendelbars -->
-          </ul>
+          </div>
+          <div class="arrowRight"><i class="fas fa-chevron-right"></i></div>
         </div>
+
       </div>
 
     </div>

@@ -2,13 +2,23 @@
 
 body{
 font-family: 'Montserrat', sans-serif;
-background-color: rgb(214, 214, 214);
+background-color: rgb(0, 0, 0);
+color:white;
 }
 
-.container{
+.mycontainer{
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   margin: auto;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.mycontainer p{
+  font-weight: bold;
+  margin: 15px 0;
+  margin-left: 15px;
+  color: white;
 }
 
 .logo img{
@@ -30,18 +40,130 @@ font-weight: bold;
 
 .wrapper{
   display:flex;
+  width: 90%;
+  margin: auto;
+  flex-direction: column;
   justify-content: space-around;
+}
+
+.locandina{
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0 15px;
+  height: 500;
+  width: 350px;
+  transition: 0.5s;
+}
+
+.locandina::before{
+  content: "";
+  position:absolute;
+  top:-2px;
+  left:-2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  background: linear-gradient(235deg,#89ff00,#060c21,#00bcd4);
+}
+
+.locandina::after{
+  content: "";
+  position:absolute;
+  transition: 0.5s;
+  top:-2px;
+  left:-2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -2;
+  background: linear-gradient(235deg,#89ff00,#060c21,#00bcd4);
+  filter: blur(50px);
+}
+
+.descriptionOver{
+  width: 400px;
+  height: 650px;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50% , -50%);
+  display: none;
+  z-index: 10;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.descriptionOver::-webkit-scrollbar {
+    display: none;
+}
+
+.descriptionOver::before{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50% , -50%);
+  width:500px;
+  height: 650px;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+.show{
+  display: inline-block;
 }
 
 .nationFlag{
   width: 20px;
 }
 
-.container li{
-font-weight: bold;
-margin: 15px 0;
-margin-left: 15px;
-list-style-type: none;
-border-bottom: 1px solid black;
-width: 500px;
+.film{
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 90%;
+  height: 700px;
+}
+
+.film-container{
+  display: flex;
+  height: 700px;
+  align-items: center;
+  justify-content:space-between;
+  overflow-y: hidden;
+}
+
+.serie-container{
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  overflow-y: hidden;
+}
+
+.arrowLeft i, .arrowRight i{
+  width: 25px;
+  font-size: 50px;
+}
+
+.scrolling-wrapper {
+  /* overflow-x: scroll; */
+  overflow-x: hidden;
+}
+
+.posterImg{
+  width: 350px;
+  height: 500px;
+  transition: 0.5s;
+}
+
+.big{
+  width: 500px;
+  height: 700px;
+}
+
+.serie-tv{
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 90%;
+  overflow-x: hidden;
 }
