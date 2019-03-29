@@ -4,6 +4,7 @@ body{
 font-family: 'Montserrat', sans-serif;
 background-color: rgb(0, 0, 0);
 color:white;
+overflow-x: hidden;
 }
 
 .mycontainer{
@@ -11,13 +12,13 @@ color:white;
   height: 100%;
   margin: auto;
   margin-top: 20px;
-  padding: 20px;
+  padding: 20px 0;
+  overflow: hidden;
 }
 
 .mycontainer p{
   font-weight: bold;
   margin: 15px 0;
-  margin-left: 15px;
   color: white;
 }
 
@@ -34,13 +35,14 @@ font-weight: bold;
   color: white;
   background-color: #000000;
 }
+
 .header h1{
   margin-left: 15px;
 }
 
 .wrapper{
   display:flex;
-  width: 90%;
+  width: 98%;
   margin: auto;
   flex-direction: column;
   justify-content: space-around;
@@ -51,7 +53,7 @@ font-weight: bold;
   display: flex;
   align-items: center;
   margin: 0 15px;
-  height: 500;
+  height: 500px;
   width: 350px;
   transition: 0.5s;
 }
@@ -64,6 +66,7 @@ font-weight: bold;
   right: -2px;
   bottom: -2px;
   z-index: -1;
+  border-radius: 8px;
   background: linear-gradient(235deg,#89ff00,#060c21,#00bcd4);
 }
 
@@ -91,7 +94,9 @@ font-weight: bold;
   z-index: 10;
   overflow-y: scroll;
   overflow-x: hidden;
+  border-radius: 8px;
 }
+
 .descriptionOver::-webkit-scrollbar {
     display: none;
 }
@@ -104,7 +109,7 @@ font-weight: bold;
   transform: translate(-50% , -50%);
   width:500px;
   height: 650px;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: -1;
 }
 
@@ -124,24 +129,29 @@ font-weight: bold;
   height: 700px;
 }
 
-.film-container{
+.wrapper-film{
   display: flex;
   height: 700px;
   align-items: center;
-  justify-content:space-between;
+  justify-content: space-between;
   overflow-y: hidden;
+  overflow-x: hidden;
 }
 
-.serie-container{
+.wrapper-serie{
   display: flex;
   align-items: center;
   justify-content:space-between;
   overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .arrowLeft i, .arrowRight i{
-  width: 25px;
+
+  height: 100%;
   font-size: 50px;
+  padding: 0 25px;
+  cursor: pointer;
 }
 
 .scrolling-wrapper {
@@ -150,6 +160,7 @@ font-weight: bold;
 }
 
 .posterImg{
+  border-radius: 8px;
   width: 350px;
   height: 500px;
   transition: 0.5s;
@@ -157,7 +168,7 @@ font-weight: bold;
 
 .big{
   width: 500px;
-  height: 700px;
+  height: 696px;
 }
 
 .serie-tv{
@@ -165,5 +176,6 @@ font-weight: bold;
   align-items: center;
   overflow: hidden;
   width: 90%;
+  height: 700px;
   overflow-x: hidden;
 }

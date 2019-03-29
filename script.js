@@ -86,7 +86,6 @@ function callAPITheMovieDbFilm(title) {
 
         /*chiamata alla funzione che compila handlebars*/
         addTitleFilm(title, starIcon, flag, originalTitle, overview, complPoster);
-
       }
 
     },
@@ -126,6 +125,7 @@ function callAPITheMovieDbSeries(title){
         var poster = res.poster_path;
         var complPoster = "<img class="+ "posterImg"+ " " +"src=" + "https://image.tmdb.org/t/p/w300" + poster + " " + "alt=''/>";
         var id = res.id;
+
         console.log("QUESTO È L'ID" + id);
 
         // chiamata per aggiugere le stelline
@@ -240,16 +240,21 @@ function getFlag(origLang) {
   return html;
 }
 
-function scrollingArrowRight() {
-  $(".film").animate({scrollLeft: "+=200"}, 800);
+function scrollingArrowRightFilm() {
+  $(".film").animate({scrollLeft: "+=300"}, 800);
 }
 
-function scrollingArrowLeft() {
-  $(".film").animate({scrollLeft: "-=200"}, 800);
+function scrollingArrowLeftFilm() {
+  $(".film").animate({scrollLeft: "-=300"}, 800);
 }
 
+function scrollingArrowRightSerie() {
+  $(".serie-tv").animate({scrollLeft: "+=300"}, 800);
+}
 
-
+function scrollingArrowLeftSerie() {
+  $(".serie-tv").animate({scrollLeft: "-=300"}, 800);
+}
 
 /*
 Mostra la descrizione al passaggio del mouse
@@ -262,7 +267,6 @@ function hoverForOverview(me){
  me.toggleClass("big");
  foto.toggleClass("big");
 }
-
 
 /*
 pulisce la schermata ad ogni ricerca
@@ -300,8 +304,11 @@ function init() {
   $(document).on("mouseleave",".locandina",hoverForOverview);
 
   /*Scrolling*/
-  $(document).on("click", ".arrowRight", scrollingArrowRight);
-  $(document).on("click", ".arrowLeft", scrollingArrowLeft);
+  $(document).on("click", ".wrapper-film>.arrowRight", scrollingArrowRightFilm);
+  $(document).on("click", ".wrapper-film>.arrowLeft", scrollingArrowLeftFilm);
+
+  $(document).on("click", ".wrapper-serie>.arrowRight", scrollingArrowRightSerie);
+  $(document).on("click", ".wrapper-serie>.arrowLeft", scrollingArrowLeftSerie);
 
   /*cast*/
   $(document).on("click",".descriptionOver",getCast);
