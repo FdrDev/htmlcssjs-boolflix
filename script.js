@@ -178,6 +178,108 @@ function getCast(id){
 }
 
 /*
+Chiamata per film popolari
+*/
+function getPopularMovie() {
+
+  var ourData = {
+    api_key: "75170e6982d68a1a46623efb2f6ace28",
+    language: "it-IT",
+  }
+
+  $.ajax({
+    url:"https://api.themoviedb.org/3/movie/popular",
+    method:"GET",
+    data : ourData,
+    success:function(data){
+      var ress = data.results;
+      for (var i = 0; i < ress.length; i++) {
+        var res = ress[i];
+
+        var title = res.title;
+        var voto = res.vote_average;
+        var votoInStelle = numbOfStars(voto);
+        var origLang = res.original_language;
+        var originalTitle = res.original_title;
+        var overview = res.overview;
+        var poster = res.poster_path;
+        var complPoster = "<img class="+ "posterImg"+ " " +"src=" + "https://image.tmdb.org/t/p/w300" + poster + " " + "alt=''/>";
+
+        // var id = res.id;
+        //
+        // console.log("QUESTO È L'ID" + id);
+
+        // chiamata per aggiugere le stelline
+        var starIcon = addStarsIcon(votoInStelle);
+        //chiamata per la bandierina
+        var flag = getFlag(origLang);
+
+        addTitleFilm(title, starIcon, flag, originalTitle, overview, complPoster);
+
+      }
+
+    },
+    error:function(request, state, error ){
+      console.log("request", request);
+      console.log("state", state);
+      console.log("error", error);
+    }
+  });
+
+}
+
+/*
+Chiamata per serie popolari
+*/
+function getPopularSeries() {
+
+  var ourData = {
+    api_key: "75170e6982d68a1a46623efb2f6ace28",
+    language: "it-IT",
+  }
+
+  $.ajax({
+    url:"https://api.themoviedb.org/3/tv/top_rated",
+    method:"GET",
+    data : ourData,
+    success:function(data){
+      var ress = data.results;
+      for (var i = 0; i < ress.length; i++) {
+        var res = ress[i];
+
+        var title = res.name;
+        var voto = res.vote_average;
+        var votoInStelle = numbOfStars(voto);
+        var origLang = res.original_language;
+        var originalTitle = res.original_name;
+        var overview = res.overview;
+        var poster = res.poster_path;
+        var complPoster = "<img class="+ "posterImg"+ " " +"src=" + "https://image.tmdb.org/t/p/w300" + poster + " " + "alt=''/>";
+
+        // var id = res.id;
+        //
+        // console.log("QUESTO È L'ID" + id);
+
+        // chiamata per aggiugere le stelline
+        var starIcon = addStarsIcon(votoInStelle);
+        //chiamata per la bandierina
+        var flag = getFlag(origLang);
+
+        addTitleSeries(title, starIcon, flag, originalTitle, overview, complPoster);
+
+      }
+
+    },
+    error:function(request, state, error ){
+      console.log("request", request);
+      console.log("state", state);
+      console.log("error", error);
+    }
+  });
+
+}
+
+/*
 Permette di avviare la ricerca anche premendo invio
 */
 function searchByEnter(e){
@@ -266,6 +368,9 @@ function hoverForOverview(me){
  var foto = me.find(".posterImg");
  me.toggleClass("big");
  foto.toggleClass("big");
+
+ var arrow = $(".arrowLeft,.arrowRight");
+ arrow.toggleClass("zIndexVariation");
 }
 
 /*
@@ -298,6 +403,10 @@ function init() {
 
   //ricerca premendo invio
   titleInputSearch.on("keyup", searchByEnter);
+
+  //mostra film popolari all'avvio
+  getPopularMovie();
+  getPopularSeries();
 
   /*Mostra la descrizione al passaggio del mouse*/
   $(document).on("mouseenter",".locandina",hoverForOverview);

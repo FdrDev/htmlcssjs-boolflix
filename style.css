@@ -45,7 +45,7 @@ font-weight: bold;
 
 .wrapper{
   display:flex;
-  width: 98%;
+  width: 100%;
   margin: auto;
   flex-direction: column;
   justify-content: space-around;
@@ -104,23 +104,31 @@ font-weight: bold;
     display: none;
 }
 
-.descriptionOver::before{
+/* .descriptionOver::before{
   content:"";
   position:absolute;
   top:50%;
   left:50%;
   transform: translate(-50% , -50%);
   width:330px;
-  height: 650px;
-  background-color: rgba(0, 0, 0, 0.7);
+  height:inherit;
   z-index: -1;
-}
+  background-color: rgba(0, 0, 0, 0.7);
+} */
 
 .descriptionOver p{
   padding: 10px;
+  min-height:500px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
 }
+
 .show{
   display: inline-block;
+}
+
+.hide{
+  display: none;
 }
 
 .nationFlag{
@@ -131,15 +139,24 @@ font-weight: bold;
   display: flex;
   align-items: center;
   overflow: hidden;
-  width: 90%;
+  width: 95%;
   height: 600px;
+}
+
+.serie-tv{
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 95%;
+  height: 550px;
+  overflow-x: hidden;
 }
 
 .wrapper-film{
   display: flex;
   height: 550px;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   overflow-y: hidden;
   overflow-x: hidden;
 }
@@ -147,18 +164,46 @@ font-weight: bold;
 .wrapper-serie{
   display: flex;
   align-items: center;
-  justify-content:space-between;
+  justify-content:space-around;
   overflow-y: hidden;
   overflow-x: hidden;
 }
 
-.arrowLeft i, .arrowRight i{
-
-  height: 100%;
-  font-size: 50px;
-  padding: 0 25px;
+.arrowLeft, .arrowRight{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  filter: blur(1px);
+  border-radius: 8px;
+  padding: 15px;
+  width: 60px;
+  height: 300px;
+  box-shadow: 0px 0px 5px 1px #fff;
+  position: absolute;
+  background-color: rgba(255,255,255, 0.1)
+
+}
+.arrowLeft{
+  left: 20px;
+  z-index: 100;
+}
+
+.arrowRight{
+  right: 20px;
+  z-index: 100;
+}
+
+.zIndexVariation{
+  z-index: -1;
+}
+
+.arrowLeft:hover, .arrowRight:hover{
+  background-color: rgba(255,255,255, 0.2)
+}
+
+.arrowLeft i, .arrowRight i{
+  font-size: 50px;
+  padding: 0 20px;
 }
 
 .scrolling-wrapper {
@@ -178,14 +223,6 @@ font-weight: bold;
   height: 546px;
 }
 
-.serie-tv{
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  width: 90%;
-  height: 550px;
-  overflow-x: hidden;
-}
 
 h2{
   position: absolute;
